@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use GuzzleHttp\Client;
 
 class PostsController extends Controller
 {
@@ -22,16 +23,12 @@ class PostsController extends Controller
         // return view('index', ['posts' => $posts]);
 
         $keyword = $request->input('keyword');
-
         $query = Post::query();
-
         if (!empty($keyword)) {
-            $query->where('book_title', 'LIKE', "%{$keyword}%")
-                ->orWhere('book_author', 'LIKE', "%{$keyword}%");
+          $query->where('book_title', 'LIKE', "%{$keyword}%")
+            ->orWhere('book_author', 'LIKE', "%{$keyword}%");
         }
-
         $posts = $query->orderBy('id', 'desc')->get();
-
         return view('index', compact('posts', 'keyword'));
     }
 
@@ -40,10 +37,33 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         // show form to create a new post
-        return view('posts.create');
+        $data = [];
+        $items = null;
+
+        if (!empty($request->keyword))
+        {
+          // replaced space with '+' and encoded keyword to search
+          $title = urlencode(preg_replace('/[\p{Z}\p{Cc}]++/u', '+', $request->keyword));
+          // url for Google Books APIs
+          $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $title . '&country=JP&tbm=bks';
+          // get books json
+          $client = new Client();
+          $response = $client->request("GET", $url);
+          $body = $response->getBody();
+          $bodyArray = json_decode($body, true);
+          // get book info
+          $items = $bodyArray['items'];
+        }
+
+        $data = [
+          'items' => $items,
+          'keyword' => $request->keyword,
+        ];
+
+        return view('posts.create', $data);
     }
 
     /**
@@ -60,7 +80,8 @@ class PostsController extends Controller
         $post->book_title = $request->book_title;
         $post->book_author = $request->book_author;
         $post->save();
-        return redirect('/');
+        // return redirect('/posts/'.$post->id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -102,8 +123,11 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->book_title = $request->book_title;
         $post->book_author = $request->book_author;
+        $post->note = $request->note;
+        $post->plan = $request->plan;
+        $post->result = $request->result;
         $post->save();
-        return redirect("/posts/".$id);
+        return redirect('/posts/'.$id);
     }
 
     /**
