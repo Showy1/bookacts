@@ -19,11 +19,15 @@
               <h5 class="card-title">{{$post->book_title}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{$post->book_author}}</h6>
             </li>
-            <li class="list-group-item">{{$post->plan}}</li>
-            <li class="list-group-item">{{$post->result}}</li>
-            <li class="list-group-item">
-              <a href="/posts/{{$post->id}}" class="btn btn-dark">詳細</a>
-              <a href="/posts/{{$post->id}}/edit" class="btn btn-dark">編集</a>
+            @if($post->plan)
+              <li class="list-group-item">{{$post->plan}}</li>
+            @endif
+            @if($post->result)
+              <li class="list-group-item">{{$post->result}}</li>
+            @endif
+            <li class="list-group-item d-flex">
+              <a href="/posts/{{$post->id}}" class="btn btn-primary mr-2">詳細</a>
+              <a href="/posts/{{$post->id}}/edit" class="btn btn-primary mr-2">編集</a>
               <form action="/posts/{{$post->id}}" method="post">
                 @method('delete')
                 @csrf
