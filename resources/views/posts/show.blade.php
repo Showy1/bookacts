@@ -69,13 +69,15 @@
           </div>
         </li>
         <li class="list-group-item d-flex">
-          <a href="/posts/{{$post->id}}/edit" class="btn btn-dark mr-2">編集</a>
           <a href="/" class="btn btn-dark mr-2">一覧に戻る</a>
-          <form action="/posts/{{$post->id}}" method="post">
-            @method('delete')
-            @csrf
-            <input type="submit" class="btn btn-dark" name="" value="削除">
-          </form>
+          @if(Auth::id() == $post->user_id)
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-dark mr-2">編集</a>
+            <form action="/posts/{{$post->id}}" method="post">
+              @method('delete')
+              @csrf
+              <input type="submit" class="btn btn-dark" name="" value="削除">
+            </form>
+          @endif
         </li>
       </ul>
     </div>

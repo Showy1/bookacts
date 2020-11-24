@@ -39,7 +39,7 @@ class PostsController extends Controller
      */
     public function create(Request $request)
     {
-        // show form to create a new post
+        // show books to create a new post
         $data = [];
         $items = null;
 
@@ -75,6 +75,11 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         // save a new post
+        $rules = [
+          'book_title' => ['required']
+        ];
+        $this->validate($request, $rules);
+
         $post = new Post;
         $post->user_id = Auth::id();
         $post->book_title = $request->book_title;
@@ -107,7 +112,11 @@ class PostsController extends Controller
     {
         // edit a post
         $post = Post::findOrFail($id);
-        return view('posts.edit', ['post' => $post]);
+        if(Auth::id() == $post->user_id){
+          return view('posts.edit', ['post' => $post]);
+        }else{
+          return redirect('/');
+        }
     }
 
     /**
@@ -121,12 +130,20 @@ class PostsController extends Controller
     {
         // save an edited post
         $post = Post::find($id);
-        $post->book_title = $request->book_title;
-        $post->book_author = $request->book_author;
-        $post->note = $request->note;
-        $post->plan = $request->plan;
-        $post->result = $request->result;
-        $post->save();
+
+        $rules = [
+          'book_title' => ['required']
+        ];
+        $this->validate($request, $rules);
+
+        if(Auth::id() == $post->user_id){
+          $post->book_title = $request->book_title;
+          $post->book_author = $request->book_author;
+          $post->note = $request->note;
+          $post->plan = $request->plan;
+          $post->result = $request->result;
+          $post->save();
+        }
         return redirect('/posts/'.$id);
     }
 
@@ -138,9 +155,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete a post
         $post = Post::find($id);
-        $post->delete();
+        if(Auth::id() == $post->user_id) $post->delete();
         return redirect('/');
     }
 }

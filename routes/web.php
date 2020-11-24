@@ -11,14 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', 'PostsController@index');
+Route::resource('posts', 'PostsController' , ['only' => ['show']]);
 
-Route::resource('posts', 'PostsController' , ['except' => ['index']]);
-// Route::resource('posts', 'PostsController');
+Route::group(['middleware' => ['auth']], function(){
+  Route::resource('posts', 'PostsController' , ['except' => ['index', 'show']]);
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('{all}', function() {
+  return redirect('/');
+});

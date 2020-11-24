@@ -58,6 +58,9 @@
                          document.getElementById('logout-form').submit();">
                   {{ Auth::user()->name }} の{{ __('ログアウト') }}
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
               </li>
               {{-- <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

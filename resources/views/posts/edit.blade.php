@@ -7,7 +7,7 @@
     <div class="form-group row">
       <label for="input_book_title" class="col-sm-2 col-form-label">書籍名</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="input_book_title" name="book_title" value="{{$post->book_title}}">
+        <input type="text" class="form-control" id="input_book_title" name="book_title" value="{{$post->book_title}}" required>
       </div>
     </div>
     <div class="form-group row">
@@ -34,6 +34,9 @@
         <textarea type="text" class="form-control" id="input_result" name="result" style="resize: none;">{{$post->result}}</textarea>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">更新</button>
+    <div class="d-flex">
+      <a href="/" class="btn btn-dark mr-2">変更を保存せずに一覧に戻る</a>
+      <button type="submit" class="btn btn-primary">更新</button>
+    </div>
   </form>
 @endsection
