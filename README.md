@@ -1,78 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# BookActs
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+**画像クリックで公開先に飛びます。右上の "ゲストログイン" からゲストログイン可能です。**
 
-## About Laravel
+[![bookacts_top](https://user-images.githubusercontent.com/62195235/100341070-70d41a00-301f-11eb-9150-cd5359c661ed.png)](http://bookacts.net)
+[![bookacts_search](https://user-images.githubusercontent.com/62195235/100341351-cad4df80-301f-11eb-8bb7-18d01b7cd386.png)](http://bookacts.net)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 目次
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+- [概要](#%E6%A6%82%E8%A6%81)
+- [機能および主要関連技術](#%E6%A9%9F%E8%83%BD%E3%81%8A%E3%82%88%E3%81%B3%E4%B8%BB%E8%A6%81%E9%96%A2%E9%80%A3%E6%8A%80%E8%A1%93)
+- [インフラ関連技術](#%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E9%96%A2%E9%80%A3%E6%8A%80%E8%A1%93)
+- [開発背景](#%E9%96%8B%E7%99%BA%E8%83%8C%E6%99%AF)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+- [ローカルへのインストール](#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+- [その他](#%E3%81%9D%E3%81%AE%E4%BB%96)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 概要
 
-## Laravel Sponsors
+BookActs は、読書後にアクションプランを立てるためのWebアプリです。  
+本を読んで終わりではなく、読書後に「何をしたいと思ったのか」をメモして行動に移し、その結果までを記録して投稿しましょう。  
+他ユーザーのアクションプランとその結果も確認することができます。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+下記ページで公開しています。  
+http://bookacts.net
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+主に **PHP (7.4), Laravel (6.20)** を使用しました。
 
-## Contributing
+## 機能および主要関連技術
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* ログイン機能 / 投稿のCRUD処理 / 部分一致検索機能 - **PHP, Laravel**
 
-## Code of Conduct
+* 書籍検索 - Google Books APIs
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* レスポンシブデザイン - **Bootstrap**
 
-## Security Vulnerabilities
+## インフラ関連技術
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* **AWS (EC2, VPC, Route 53), Docker,** Nginx
 
-## License
+## 開発背景
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+読書には、単なる趣味としての読書と、実用的な自己研鑽のための読書の2種類の読書がある。後者では、技術書を通して専門的な知識を得ることを目的とする場合もあるが、ビジネス書や自己啓発本を通してビジネスや人間関係等の場面に関するスキルの向上を目的とする場合がある。そのようなビジネス書や自己啓発本を読む人々の一部には、ただ本を読んで終えている人々がいる。読書を通して得た知識は、実際に行動に移してこそ、読者の成長に繋がる。読書からのインプットをアウトプットに変換することが必要である。  
+
+開発者は、自己研鑽のための一連の読書体験を後押しすべく、読書後にアクションプランを立てることを促進するサービスが必要であると考えた。さらに、「他ユーザーのアクションプランとその結果を確認できる機会」をユーザーに与えることで、ユーザーの行動意欲の上昇に繋げることができると考えた。以上のような理由で、開発者は、読書後にアクションプランを立て、行動結果までを他ユーザーと共有することが可能な本アプリ "BookActs" を開発した。
+
+## 使用方法
+
+BookActs は、読書後にアクションプランを立てるためのWebアプリです。本を読んで終わりではなく、読書後に「何をしたいと思ったのか」をメモして行動に移し、その結果までを記録して投稿しましょう。他ユーザーのアクションプランとその結果も確認することができます。  
+
+トップページ（ http://bookacts.net ）では、投稿の一覧が表示されます。右上の「ゲストログイン」、「ログイン」、「新規登録」のいずれかを選択して、ログインできます。ログイン後のトップページでも同様に投稿の一覧が表示されますが、「新規投稿」、自分の投稿の「編集」、「削除」が可能になります。それぞれの投稿には、入力状況に応じて下記の情報が表示されます。
+
+* 書籍名
+* 著者
+* 計画（読書後のアクションプラン）
+* 結果（アクションの結果）
+
+投稿の「詳細」を選択することにより、その他の情報を確認することができます。  
+
+投稿を作成するには、ログインした状態で右上の「新規投稿」を選択してください。新規投稿ページ（ http://bookacts.net/posts/create ）には、検索欄が表示されます。書籍名や著者等を入力して、作成したい投稿に関する本を検索してください。検索結果には、関連する書籍が最大10件表示されます。所望の書籍を選択すると、投稿が作成されます。作成後にアクセスされる投稿編集ページ（ http[]()://bookacts.net/posts ）では、「メモ」、「計画（読書後のアクションプラン）」、「結果（アクションの結果）」を適宜入力可能です。入力して「更新」を選択してください。一覧に戻ると、作成された投稿が追加されていることが確認できます。
+
+トップページ上部の検索欄を利用して、投稿を検索できます。検索キーワードとして書籍名または著者を入力して、「キーワードを含む投稿を検索」を選択することにより、キーワードを含む投稿の一覧が表示されます。
+
+説明は以上です。
+
+## ローカルへのインストール
+
+```
+$ git clone https://github.com/Showy1/bookacts.git
+$ cd bookacts
+$ cp .env.example .env
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose exec app bash
+[app container]$ composer install
+[app container]$ php artisan migrate
+[app container]$ php artisan db:seed
+```
+
+## その他
+
+開発中・随時更新

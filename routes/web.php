@@ -12,11 +12,10 @@
 */
 
 Route::get('/', 'PostsController@index');
-Route::resource('posts', 'PostsController' , ['only' => ['show']]);
-
 Route::group(['middleware' => ['auth']], function(){
-  Route::resource('posts', 'PostsController' , ['except' => ['index', 'show']]);
+  Route::resource('posts', 'PostsController', ['except' => ['index', 'show']]);
 });
+Route::resource('posts', 'PostsController', ['only' => ['show']]);
 
 Auth::routes();
 

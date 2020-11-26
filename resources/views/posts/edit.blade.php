@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="d-flex">
-      <a href="/" class="btn btn-dark mr-2">変更を保存せずに一覧に戻る</a>
+      <a href="/" class="btn btn-dark mr-2">一覧に戻る</a>
       <button type="submit" class="btn btn-primary">更新</button>
     </div>
   </form>
